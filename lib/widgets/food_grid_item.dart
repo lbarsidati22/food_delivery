@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:food_delevery/models/food_item.dart';
 
 class FoodGridItem extends StatelessWidget {
-  FoodGridItem({super.key, required this.foodItem});
+  const FoodGridItem({super.key, required this.foodItem});
   final FoodItem foodItem;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
         color: Colors.white,
       ),
       child: Padding(
