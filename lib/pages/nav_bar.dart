@@ -27,20 +27,18 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
       drawer: Drawer(
         child: Center(
           child: Text('i am in the drawer'),
         ),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade200,
         centerTitle: true,
         title: Text('Foodak'),
       ),
       body: bodyOption[selctedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.deepOrange,
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: onItemTap,
         currentIndex: selctedIndex,
         items: [

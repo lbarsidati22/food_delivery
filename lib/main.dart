@@ -16,6 +16,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Foodak - food Delivery',
       theme: ThemeData(
+        primaryColor: Colors.deepOrange,
+        listTileTheme: ListTileThemeData(
+          iconColor: Colors.deepOrange,
+        ),
+        fontFamily: 'OpenSans',
+        textTheme: TextTheme(),
+        dividerTheme: DividerThemeData(
+          thickness: 2,
+          endIndent: 20,
+          indent: 20,
+        ),
+        scaffoldBackgroundColor: Colors.grey.shade200,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.shade200,
+        ),
         useMaterial3: true,
       ),
       home: NavBar(),
