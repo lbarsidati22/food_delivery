@@ -27,6 +27,9 @@ class AccountPage extends StatelessWidget {
     String? subTitle,
     required IconData icon,
   }) {
+    final size = MediaQuery.sizeOf(context);
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return ListTile(
       onTap: () {
         debugPrint('$title ckilcked');
@@ -35,54 +38,90 @@ class AccountPage extends StatelessWidget {
       subtitle: subTitle != null ? Text(subTitle) : null,
       leading: Icon(
         icon,
-        size: 33,
+        size: isLandscape ? size.height * 0.09 : size.height * 0.04,
       ),
       trailing: Icon(
         Icons.chevron_right,
-        size: 25,
+        size: isLandscape ? size.height * 0.09 : size.height * 0.04,
+      ),
+    );
+  }
+
+  Widget personProfile(double width, double height) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(
+            'assets/images/lbar.jpg',
+          ),
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    final size = MediaQuery.sizeOf(context);
+    final textName = Text(
+      'Lbar Sidati',
+      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+    );
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+    return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            height: 250,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/lbar.jpg',
-                ),
-              ),
+          if (!isLandscape) ...[
+            personProfile(size.width * 0.5, size.height * 0.25),
+            SizedBox(
+              height: 14.0,
             ),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          Text(
-            'Lbar Sidati',
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey,
+            textName,
+            SizedBox(
+              height: 8.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                orderVousherItem(number: 50, name: 'Order', context),
+                orderVousherItem(number: 10, name: 'Vouchers', context),
+              ],
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+          ],
+          if (isLandscape) ...[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    personProfile(size.width * 0.25, size.height * 0.5),
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    textName,
+                  ],
                 ),
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              orderVousherItem(number: 50, name: 'Order', context),
-              orderVousherItem(number: 10, name: 'Vouchers', context),
-            ],
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
+                Column(
+                  children: [
+                    orderVousherItem(number: 50, name: 'Order', context),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    orderVousherItem(number: 10, name: 'Vouchers', context),
+                  ],
+                ),
+              ],
+            ),
+          ],
           Divider(),
           itemTappedTile(
             title: 'Past Orders',

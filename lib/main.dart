@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_delevery/pages/home_page.dart';
 import 'package:food_delevery/pages/nav_bar.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
   runApp(const MyApp());
 }
 
