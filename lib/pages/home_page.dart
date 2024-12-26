@@ -1,11 +1,12 @@
 //dart
-import 'dart:io';
+//import 'dart:io';
 
 //flutter
 import 'package:flutter/material.dart';
 //other packges
 //internel (files)
 import 'package:food_delevery/models/food_item.dart';
+import 'package:food_delevery/pages/food_details_page.dart';
 import 'package:food_delevery/widgets/food_grid_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,8 +43,19 @@ class HomePage extends StatelessWidget {
                 crossAxisSpacing: size.height * 0.02,
               ),
               itemBuilder: (context, index) {
-                return FoodGridItem(
-                  foodIndex: index,
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => FoodDetailsPage(
+                          foodItem: food[index],
+                        ),
+                      ),
+                    );
+                  },
+                  child: FoodGridItem(
+                    foodIndex: index,
+                  ),
                 );
               },
             ),

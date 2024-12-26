@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delevery/models/food_item.dart';
+import 'package:food_delevery/pages/food_details_page.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -37,71 +38,82 @@ class _FavoritePageState extends State<FavoritePage> {
             child: ListView.builder(
               itemCount: favoriteFood.length,
               itemBuilder: (context, index) {
-                return Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      children: [
-                        Image.network(
-                          height: isLandscape
-                              ? size.height * 0.2
-                              : size.height * 0.09,
-                          width: size.width * 0.2,
-                          favoriteFood[index].imageUrl,
-                          fit: BoxFit.contain,
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => FoodDetailsPage(
+                          foodItem: favoriteFood[index],
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                favoriteFood[index].name,
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                '\$ ${favoriteFood[index].price}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ],
+                      ),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            height: isLandscape
+                                ? size.height * 0.2
+                                : size.height * 0.09,
+                            width: size.width * 0.2,
+                            favoriteFood[index].imageUrl,
+                            fit: BoxFit.contain,
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            final targetedItem = favoriteFood[index];
-                            int targetedIndex = food.indexOf(targetedItem);
-                            setState(
-                              () {
-                                food[targetedIndex] = food[targetedIndex]
-                                    .copyWith(isFavorite: false);
-                                favoriteFood.remove(targetedItem);
-                              },
-                            );
-                          },
-                          icon: Icon(
-                            Icons.favorite,
-                            color: Theme.of(context).primaryColor,
-                            size: isLandscape
-                                ? size.height * 0.1
-                                : size.height * 0.035,
+                          SizedBox(
+                            width: 10,
                           ),
-                        )
-                      ],
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  favoriteFood[index].name,
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  '\$ ${favoriteFood[index].price}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              final targetedItem = favoriteFood[index];
+                              int targetedIndex = food.indexOf(targetedItem);
+                              setState(
+                                () {
+                                  food[targetedIndex] = food[targetedIndex]
+                                      .copyWith(isFavorite: false);
+                                  favoriteFood.remove(targetedItem);
+                                },
+                              );
+                            },
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Theme.of(context).primaryColor,
+                              size: isLandscape
+                                  ? size.height * 0.1
+                                  : size.height * 0.035,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 );
