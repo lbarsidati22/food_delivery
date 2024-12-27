@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 //internel (files)
 import 'package:food_delevery/models/food_item.dart';
 import 'package:food_delevery/pages/food_details_page.dart';
+import 'package:food_delevery/ui_models/food_details_args.dart';
 import 'package:food_delevery/widgets/food_grid_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,14 +52,13 @@ class _HomePageState extends State<HomePage> {
                 return InkWell(
                   onTap: () {
                     Navigator.of(context)
-                        .push(
-                          MaterialPageRoute(
-                            builder: (context) => FoodDetailsPage(
-                              foodIindex: index,
-                            ),
-                          ),
-                        )
-                        .then((onValue) => setState(() {}));
+                        .pushNamed(
+                      FoodDetailsPage.routeName,
+                      arguments: FoodDetailsArgs(foodIndex: index),
+                    )
+                        .then((onValue) {
+                      setState(() {});
+                    });
                   },
                   child: FoodGridItem(
                     foodIndex: index,

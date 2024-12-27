@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delevery/pages/food_details_page.dart';
 import 'package:food_delevery/pages/nav_bar.dart';
 
 void main() {
@@ -37,7 +38,13 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: NavBar(),
+      routes: {
+        '/': (context) => NavBar(),
+        FoodDetailsPage.routeName: (context) => FoodDetailsPage(),
+      },
     );
   }
 }
+// routes: {
+//         '/': (context) => NavBar(),
+//       },
