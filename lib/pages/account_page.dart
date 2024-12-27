@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delevery/utilities/app_assets.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -55,7 +56,7 @@ class AccountPage extends StatelessWidget {
         shape: BoxShape.circle,
         image: DecorationImage(
           image: AssetImage(
-            'assets/images/lbar.jpg',
+            AppAssets.profileImg,
           ),
         ),
       ),

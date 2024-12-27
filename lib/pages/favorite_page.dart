@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delevery/models/food_item.dart';
 import 'package:food_delevery/pages/food_details_page.dart';
 import 'package:food_delevery/ui_models/food_details_args.dart';
+import 'package:food_delevery/utilities/app_assets.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -23,7 +24,7 @@ class _FavoritePageState extends State<FavoritePage> {
             child: Column(
               children: [
                 Image.asset(
-                  'assets/images/empty_state.png',
+                  AppAssets.emptyState,
                   fit: BoxFit.cover,
                   height: isLandscape ? size.height * 0.5 : size.height * 0.3,
                 ),
