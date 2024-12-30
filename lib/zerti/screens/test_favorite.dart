@@ -5,8 +5,12 @@ class TestFavorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Favorite'),
-    );
+    return ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Card(
+            color: Colors.grey,
+          );
+        });
   }
 }

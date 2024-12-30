@@ -46,9 +46,15 @@ class _TestNavBarPageState extends State<TestNavBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      // backgroundColor: Colors.red,
       appBar: AppBar(
-        title: Text('Foodak'),
+        centerTitle: true,
+        title: Text(
+          'Foodak',
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+        ),
       ),
       body: PersistentTabView(
         context,
