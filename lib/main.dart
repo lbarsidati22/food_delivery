@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delevery/pages/food_details_page.dart';
 import 'package:food_delevery/pages/nav_bar.dart';
+import 'package:food_delevery/zerti/screens/nav_bar.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -32,16 +33,17 @@ class MyApp extends StatelessWidget {
           endIndent: 20,
           indent: 20,
         ),
-        scaffoldBackgroundColor: Colors.grey.shade200,
+        // scaffoldBackgroundColor: Colors.grey.shade200,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.grey.shade200,
         ),
         useMaterial3: true,
       ),
-      routes: {
-        '/': (context) => NavBar(),
-        FoodDetailsPage.routeName: (context) => FoodDetailsPage(),
-      },
+      home: TestNavBarPage(),
+      // routes: {
+      //   '/': (context) => NavBar(),
+      //   FoodDetailsPage.routeName: (context) => FoodDetailsPage(),
+      // },
     );
   }
 }
